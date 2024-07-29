@@ -2,6 +2,8 @@ package com.epam.autotasks;
 
 import lombok.Getter;
 
+import java.util.Objects;
+
 @Getter
 public class ContestResult {
 
@@ -18,6 +20,18 @@ public class ContestResult {
     }
 
     public Integer countResults(Integer running, Integer jumping, Integer purring) {
-        return null;
+        return running + jumping + purring;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (! (o instanceof ContestResult that)) return false;
+        return Objects.equals(getRunning(), that.getRunning()) && Objects.equals(getJumping(), that.getJumping()) && Objects.equals(getPurring(), that.getPurring()) && Objects.equals(getSum(), that.getSum());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getRunning(), getJumping(), getPurring(), getSum());
     }
 }
